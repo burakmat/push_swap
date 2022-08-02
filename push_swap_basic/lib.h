@@ -30,4 +30,10 @@ void double_reverse_rotate(t_stack *a, t_stack *b);
 int is_sorted(t_stack *stack);
 void get_sorted(t_stack *a, t_stack *b);
 
+
+
+
+
+void unnecessary_function(t_stack *obj, t_stack *b);
+
 #endif

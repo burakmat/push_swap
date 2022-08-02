@@ -95,7 +95,7 @@ void unnecessary_function(t_stack *obj, t_stack *b)
 		printf("%d\n", b->stack[i]);
 		i++;
 	}
-	printf("b size: %d", b->size);
+	printf("b size: %d\n-------------------------\n", b->size);
 } 
 //************************************
 
@@ -108,7 +108,7 @@ int main(int ac, char **av)
 	check_input(++av);
 	create_stack(av, get_total_size(av), &a);
 	b.size = 0;
-	get_sorted(&a, &b);
 	unnecessary_function(&a, &b);
+	get_sorted(&a, &b);
 	return 0;
 }
