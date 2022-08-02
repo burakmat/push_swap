@@ -41,12 +41,13 @@ void reverse(t_stack *stack)
 
 //***********************************************************
 
-int find_chunk_max(t_stack *stack, int min, int chunk_size)
+int find_chunk_max(t_stack *stack, int min, int chunk_size)///PROBLEM!!!!
 {
 	int i;
 	int tmp_min;
 
 	tmp_min = 2147483647;
+	printf("chunksize: %d\n", chunk_size);
 	while (chunk_size--)
 	{
 		i = 0;
@@ -57,6 +58,7 @@ int find_chunk_max(t_stack *stack, int min, int chunk_size)
 			++i;
 		}
 		min = tmp_min;
+		printf("tmpmin: %d\n", tmp_min);
 	}
 	//printf("---%d---\n", min);
 	return (min) + 1;
@@ -72,6 +74,7 @@ void find_to_send(t_stack *a, t_stack *b, int upper_bound, int lower_bound)
 	{
 		if (a->stack[i] < upper_bound && a->stack[i] >= lower_bound)
 		{
+			printf("a->stack[i]: %d, i: %d\n", a->stack[i], i);
 			while (i--)
 			{
 				rotate(a);
