@@ -26,6 +26,7 @@ void shrink_stack(t_stack *stack)
 	if (stack->size == 1)
 	{
 		free(stack->stack);
+		stack->size -= 1;
 		return ;
 	}
 	new_stack = malloc(sizeof(int) * (stack->size - 1));
