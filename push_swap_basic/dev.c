@@ -42,7 +42,6 @@ int find_max(t_stack *a, int min, int chunk_size)
 
 
 
-
 int find_chunk_max(t_stack *stack, int min, int chunk_size)///PROBLEM!!!!
 {
 	int i;

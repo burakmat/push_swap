@@ -109,7 +109,6 @@ int main(int ac, char **av)
 	create_stack(av, get_total_size(av), &a);
 	b.size = 0;
 	unnecessary_function(&a, &b);
-	get_sorted(&a, &b);
-	unnecessary_function(&a, &b);
+	sort(&a, &b);
 	return 0;
 }
