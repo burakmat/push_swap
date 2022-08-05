@@ -113,3 +113,18 @@ void terminate()
 	exit(0);
 }
 
+int find_max(t_stack *stack)
+{
+	int i;
+	int max;
+
+	max = -2147483647;
+	i = 0;
+	while (i < stack->size)
+	{
+		if (stack->stack[i] > max)
+			max = stack->stack[i];
+		++i;
+	}
+	return max;
+}

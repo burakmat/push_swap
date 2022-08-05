@@ -90,7 +90,10 @@ void send_next_chunk(t_stack *a, t_stack *b, int chunk_size, int *min)
 	upper_bound = find_chunk_max(a, *min, chunk_size);
 	while (chunk_size-- > 0)
 	{
-		find_to_send(a, b, upper_bound, (*min) + 1);
+		if (*min == -2147483648)
+			find_to_send(a, b, upper_bound, *min);
+		else
+			find_to_send(a, b, upper_bound, (*min) + 1);
 	}
 	*min = upper_bound;
 }
@@ -147,17 +150,23 @@ void get_sorted(t_stack *a, t_stack *b)
 
 	min = -2147483648;
 	number_of_chunks = optimal_num_of_chunks(a->size);//may be different after
-	chunk_size = a->size / number_of_chunks;
-	//printf("chunk_size: %d\n", chunk_size);
+	chunk_size = a->size / number_of_chunks;//can be shortened
 	while (number_of_chunks-- > 0)
 	{
 		if (number_of_chunks)
 			send_next_chunk(a, b, chunk_size, &min);
 		else
 		{
-			//printf("entering last\n");
-			send_last_chunk(a, b, min, chunk_size);///review num of chunks (last parameter)
-			}
+			send_last_chunk(a, b, min, chunk_size);
+			min = find_max(b);
+
+		}
+	
+		organize_main_stack(a, min, b);
+		unnecessary_function(a, b);
+		send_all_data_to_a(b, a);
+		if (!number_of_chunks)
+			organize_main_stack(a, min, b);
 		unnecessary_function(a, b);
 	}	
 }

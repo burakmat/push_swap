@@ -99,3 +99,17 @@ int find_max_index(t_stack *b)
 	}
 	return (ind);
 }
+
+int which_index(t_stack *stack, int num)
+//returns the given number's index in stack
+{
+	int i;
+
+	i = 0;
+	while (i < stack->size)
+	{
+		if (stack->stack[i] == num)
+			return (i);
+		++i;
+	}
+}

@@ -110,5 +110,6 @@ int main(int ac, char **av)
 	b.size = 0;
 	unnecessary_function(&a, &b);
 	sort(&a, &b);
+	unnecessary_function(&a, &b);
 	return 0;
 }
