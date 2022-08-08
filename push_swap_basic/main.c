@@ -42,20 +42,23 @@ int get_total_size(char **str)
 	return (i);
 }
 
-void set_object(t_stack *obj, int size)
+void set_object(t_stack *obj, int size, t_stack *b)
 {
 	obj->stack = malloc(sizeof(int) * size);
 	if (!obj->stack)
 		terminate();
 	obj->size = size;
+	obj->name = 'a';
+	b->size = 0;
+	b->name = 'b';
 }
 
-void create_stack(char **av, int size, t_stack *obj)
+void create_stack(char **av, int size, t_stack *obj, t_stack *b)
 {
 	char *ptr;
 	int i;
 
-	set_object(obj, size);
+	set_object(obj, size, b);
 	i = 0;
 	ptr = *av;
 	while (ptr)
@@ -106,10 +109,9 @@ int main(int ac, char **av)
 	t_stack b;
 
 	check_input(++av);
-	create_stack(av, get_total_size(av), &a);
-	b.size = 0;
-	unnecessary_function(&a, &b);
+	create_stack(av, get_total_size(av), &a, &b);
+	//unnecessary_function(&a, &b);
 	sort(&a, &b);
-	unnecessary_function(&a, &b);
+//	unnecessary_function(&a, &b);
 	return 0;
 }

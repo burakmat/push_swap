@@ -7,10 +7,9 @@
 
 typedef struct s_stack
 {
-
 	int *stack;
 	int size;
-
+	char name;
 }		t_stack;
 
 //utils

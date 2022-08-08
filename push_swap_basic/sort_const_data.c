@@ -92,7 +92,7 @@ void set_min_to_base(t_stack *a, int max, t_stack *b)
 {
 	int min_ind;
 
-	unnecessary_function(a, b);
+//	unnecessary_function(a, b);
 	min_ind = which_index(a, max);
 	if (a->size - min_ind - 1 <= min_ind)
 	{

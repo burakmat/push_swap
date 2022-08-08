@@ -50,6 +50,9 @@ void swap(t_stack *stack)
 	tmp = stack->stack[1];
 	stack->stack[1] = stack->stack[0];
 	stack->stack[0] = tmp;
+	write(1, "s", 1);
+	write(1, &(stack->name), 1);
+	write(1, "\n", 1);
 }
 
 void double_swap(t_stack *a, t_stack *b)
@@ -62,6 +65,9 @@ void push(t_stack *to, t_stack *from)
 {
 	append_stack(to, from->stack[0]);
 	shrink_stack(from);
+	write(1, "p", 1);
+	write(1, &(to->name), 1);
+	write(1, "\n", 1);
 }
 
 void rotate(t_stack *stack)
@@ -77,6 +83,9 @@ void rotate(t_stack *stack)
 		++i;
 	}
 	stack->stack[i] = tmp;
+	write(1, "r", 1);
+	write(1, &(stack->name), 1);
+	write(1, "\n", 1);
 }
 
 void double_rotate(t_stack *a, t_stack *b)
@@ -98,6 +107,9 @@ void reverse_rotate(t_stack *stack)
 		--i;
 	}
 	stack->stack[i] = tmp;
+	write(1, "rr", 2);
+	write(1, &(stack->name), 1);
+	write(1, "\n", 1);
 }
 
 void double_reverse_rotate(t_stack *a, t_stack *b)
