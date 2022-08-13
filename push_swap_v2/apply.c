@@ -10,7 +10,6 @@ void apply_one(t_stack *a, t_stack *b, int a_step_num, int b_step_num)
 	int rr;
 	int other;
 
-	printf("a step: %d, b step: %d\n", a_step_num, b_step_num);
 	rr = find_rr_num(a_step_num, b_step_num);
 	other = a_step_num - b_step_num;
 	while (rr--)
@@ -29,7 +28,6 @@ void apply_one(t_stack *a, t_stack *b, int a_step_num, int b_step_num)
 
 void apply_two(t_stack *a, t_stack *b, int a_step_num, int b_step_num)
 {
-	printf("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa step: %d, b step: %d\n", a_step_num, b_step_num);
 	while (a_step_num--)
 		rotate(a, 1);
 	while (b_step_num--)
@@ -38,7 +36,6 @@ void apply_two(t_stack *a, t_stack *b, int a_step_num, int b_step_num)
 
 void apply_three(t_stack *a, t_stack *b, int a_step_num, int b_step_num)
 {
-	printf("a step: %d, b step: %d\n", a_step_num, b_step_num);
 	while (a_step_num--)
 		reverse_rotate(a, 1);
 	while (b_step_num--)
@@ -49,8 +46,6 @@ void apply_four(t_stack *a, t_stack *b, int a_step_num, int b_step_num)
 {
 	int rrr;
 	int other;
-
-	printf("a step: %d, b step: %d\n", a_step_num, b_step_num);
 
 	rrr = find_rr_num(a_step_num, b_step_num);
 	other = a_step_num - b_step_num;

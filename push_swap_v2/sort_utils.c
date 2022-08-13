@@ -88,7 +88,6 @@ int which_index(t_stack *stack, int num)
 
 int find_max_index_with_upper_bound(t_stack *stack, int upper)
 //returns the max number's index that lower than upper bound in a stack
-//PROBLEM!!!!!
 {
 	int i;
 	int max;
@@ -107,8 +106,6 @@ int find_max_index_with_upper_bound(t_stack *stack, int upper)
 	}
 	if (max == -2147483648)
 		return (find_max_index(stack));
-	//printf("max_ind: %d\n",max_ind);
-//	printf("b max: %d\n", stack->stack[max_ind]);
 	return max_ind;
 }
 
