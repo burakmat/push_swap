@@ -149,7 +149,7 @@ void get_sorted(t_stack *a, t_stack *b)
 	int min;
 
 	min = -2147483648;
-	number_of_chunks = 7;//optimal_num_of_chunks(a->size);//may be different after
+	number_of_chunks = 2;//optimal_num_of_chunks(a->size);//may be different after
 	chunk_size = a->size / number_of_chunks;//can be shortened
 	while (number_of_chunks-- > 0)
 	{
