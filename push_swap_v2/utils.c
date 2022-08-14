@@ -23,7 +23,6 @@ int	wordnum(const char *s)
 			i++;
 		}
 	}
-	/* printf("%d\n", num); */
 	return (num);
 }
 
