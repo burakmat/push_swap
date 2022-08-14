@@ -234,20 +234,6 @@ void create_stack(char **av, int size, t_stack *obj, t_stack *b)
 
 //------------------------------------------------------------------------
 
-int are_same(char *str1, char *str2)
-{
-	int i;
-
-	if (!str1 || !str2)
-		return (0);
-	i = 0;
-	while (str1[i])
-	{
-		if (str1[i] != str2[i])
-			return (0);
-	}
-	return (1);
-}
 
 void append_stack(t_stack *stack, int num, t_stack *second_stack)
 {
@@ -360,29 +346,49 @@ void double_reverse_rotate(t_stack *a, t_stack *b)
 	reverse_rotate(b);
 }
 
+int are_same(char *str1, char *str2)
+{
+	int i;
+
+	if (!str1 || !(*str1))
+		return (0);
+	i = 0;
+	while (str1[i])
+	{
+		if (str1[i] != str2[i])
+		{
+	//		printf("i:%d, str1[i]: %c, str2[i]: %c\n", i, str1[i], str2[i]);
+			return (0);
+		}
+		++i;
+	}
+	return (1);
+}
+
 void choose_function(char *str, t_stack *a, t_stack *b)
 {
-	if (are_same(str, "sa"))
+	printf("choosefunc get: %s\n", str);
+	if (are_same(str, "sa\n"))
 		swap(a);
-	else if (are_same(str, "sb"))
+	else if (are_same(str, "sb\n"))
 		swap(b);
-	else if (are_same(str, "ss"))
+	else if (are_same(str, "ss\n"))
 		double_swap(a, b);
-	else if (are_same(str, "pa"))
+	else if (are_same(str, "pa\n"))
 		push(a, b);
-	else if (are_same(str, "pb"))
+	else if (are_same(str, "pb\n"))
 		push(b, a);
-	else if (are_same(str, "ra"))
+	else if (are_same(str, "ra\n"))
 		rotate(a);
-	else if (are_same(str, "rb"))
+	else if (are_same(str, "rb\n"))
 		rotate(b);
-	else if (are_same(str, "rr"))
+	else if (are_same(str, "rr\n"))
 		double_rotate(a, b);
-	else if (are_same(str, "rra"))
+	else if (are_same(str, "rra\n"))
 		reverse_rotate(a);
-	else if (are_same(str, "rrb"))
+	else if (are_same(str, "rrb\n"))
 		reverse_rotate(b);
-	else if (are_same(str, "rrr"))
+	else if (are_same(str, "rrr\n"))
 		double_reverse_rotate(a, b);
 	else
 		free_and_terminate(a, b);
@@ -422,13 +428,15 @@ int main(int ac, char **av)
 		return_val = 1;
 		while (return_val > 0)
 		{
-			printf(":D\n");
 			return_val = read(0, str, 5);
 			if (return_val == -1)
 				free_and_terminate(&a, &b);
-			else if (return_val > 0)
-				choose_function(str, &a, &b);
-	//		unnecessary_function(&a, &b);
+			else if (return_val)
+			{
+			str[return_val] = '\0';
+			choose_function(str, &a, &b);
+			}
+			unnecessary_function(&a, &b);
 		}
 		if (is_sorted(&a) && !b.size)
 			write(1, "OK\n", 3);
